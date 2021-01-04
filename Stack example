@@ -1,0 +1,54 @@
+from Stack import *
+
+
+x = '32576-+*-'  # insert postfix expression
+
+'345+*2-36*+'
+
+def main(x):
+
+    
+    pond = Stack()
+    x = list(x)
+    
+    
+    for var in x:
+        #
+        # I couldn't quite remember how to make this smaller
+        
+        if (var == '1' or var == '2' or var == '3' or var == '4' or var == '5' or
+        var == '6' or var == '7' or var == '8' or var == '9' or var == '0'):
+            pond.push(int(var))
+            
+
+        elif var == '-':
+            ch2 = pond.pop()
+            ch1 = pond.pop()
+            ch3 = ch1 - ch2
+            pond.push(ch3)
+            
+
+        elif var == '+':
+            ch2 = pond.pop()
+            ch1 = pond.pop()
+            ch3 = ch1 + ch2
+            pond.push(ch3)
+            
+
+        elif var == '*':
+            ch2 = pond.pop()
+            ch1 = pond.pop()
+            ch3 = ch1 * ch2
+            pond.push(ch3)
+
+        elif var == '/':
+            ch2 = pond.pop()
+            ch1 = pond.pop()
+            ch3 = ch1 / ch2
+            pond.push(ch3)
+    
+    return print(pond.top())
+
+
+main(x)
+print("Should return -9")
